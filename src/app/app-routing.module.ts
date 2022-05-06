@@ -35,9 +35,6 @@ import { HistoryStockComponent } from './entities/history-stock/history-stock.co
 import { StockComponent } from './entities/stock/stock.component';
 import { PurchaseOrderComponent } from './entities/purchase-order/purchase-order.component';
 import { PurchaseOrderEditComponent } from './entities/purchase-order/purchase-order-edit/purchase-order-edit.component';
-import { DirectSalesPaymentComponent } from './entities/direct-sales-payment/direct-sales-payment.component';
-import { DirectSalesPaymentModule } from './entities/direct-sales-payment/direct-sales-payment.module';
-import { DashboardModule } from './entities/dashboard/dashboard.module';
 import { StockOpnameComponent } from './entities/stock-opname/stock-opname.component';
 import { StockOpnameEditComponent } from './entities/stock-opname/stock-opname-edit/stock-opname-edit.component';
 import { ReportPaymentComponent } from './entities/report/report-payment/report-payment.component';
@@ -100,10 +97,6 @@ const routes: Routes = [
                     { path: 'stock-opname/:id', component: StockOpnameEditComponent },
                     { path: 'purchase-order', component: PurchaseOrderComponent },
                     { path: 'purchase-order/:id', component: PurchaseOrderEditComponent },
-                    // { path: 'direct-sales-payment', component: DirectSalesPaymentComponent },
-                    // { path: 'direct-sales-payment', loadChildren:'./entities/direct-sales-payment/direct-sales-payment.module#DirectSalesPaymentModule' },
-                    // { path: 'direct-sales-payment', loadChildren: ()=> DirectSalesPaymentModule },
-                    { path: 'direct-sales-payment', component: DirectSalesPaymentComponent },
                     { path: 'report-payment', component: ReportPaymentComponent },
                     { path: 'report-sales', component: ReportSalesComponent },
                     { path: 'report-payment-supplier', component: ReportPaymentSupplierComponent },

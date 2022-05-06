@@ -34,7 +34,7 @@ export class LoginService {
     .pipe(map(authenticateSuccess.bind(this)));
 
     function authenticateSuccess(resp ) {
-        console.log('result from server ' , resp.body.token);
+        console.log('result from server ' , resp.body);
         const bearerToken = resp.headers.get('Authorization');
         if (bearerToken && bearerToken.slice(0, 7) === 'Bearer ') {
             console.log('masuk ke cek bearer token ');

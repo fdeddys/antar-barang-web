@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
           if (data !== '') {
             // grecaptcha.reset();
             this.router.navigate(['main']);
-            this.parameterService.findByName("total_record_product")
+            this.parameterService.findByName("total_record")
               .subscribe(
                 (res => {
                   if (res.body.value !== '0') {
@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
                     // };
                     GlobalComponent.maxRecord = total;
                     this.localStorage.store('max_search_product', total);
-                  } 
+                  }
                 }),
                 (err => {
                     console.log("Failed get param")

@@ -30,14 +30,12 @@ import { OnlyNumberModule } from './app-directive/only-number.module';
 import { HistoryStockModule } from './history-stock/history-stock.module';
 import { StockModule } from './stock/stock.module';
 import { PurchaseOrderModule } from './purchase-order/purchase-order.module';
-import { DirectSalesPaymentModule } from './direct-sales-payment/direct-sales-payment.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { StockOpnameModule } from './stock-opname/stock-opname.module';
 import { ReportPaymentModule } from './report/report-payment/report-payment.module';
 import { ReportSalesModule } from './report/report-sales/report-sales.module';
 import { StockInfoBatchModule } from './stock-info-batch/stock-info-batch.module';
 import { PaymentSupplierModule } from './payment-supplier/payment-supplier.module';
-import { ReportServiceService } from './report/report-service/report-service.service';
 import { ReportServiceModule } from './report/report-service/report-service.module';
 import { ReportPaymentSupplierModule } from './report/report-payment-supplier/report-payment-supplier.module';
 
@@ -63,7 +61,7 @@ import { ReportPaymentSupplierModule } from './report/report-payment-supplier/re
         SalesOrderPaymentModule,
         SalesOrderReturnModule,
         SalesmanModule,
-        WarehouseModule, 
+        WarehouseModule,
         ReturnReceivingModule,
         PaymentModule,
         StockMutationModule,
@@ -71,7 +69,6 @@ import { ReportPaymentSupplierModule } from './report/report-payment-supplier/re
         HistoryStockModule,
         StockModule,
         PurchaseOrderModule,
-        DirectSalesPaymentModule,
         DashboardModule,
         StockOpnameModule,
         ReportPaymentModule,
