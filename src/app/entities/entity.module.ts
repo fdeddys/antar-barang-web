@@ -13,6 +13,7 @@ import { OnlyNumberModule } from './app-directive/only-number.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { CustomerModule } from './customer/customer.module';
 import { SellerModule } from './seller/seller.module';
+import { DriverModule } from './driver/driver.module';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { SellerModule } from './seller/seller.module';
         DashboardModule,
         CustomerModule,
         SellerModule,
+        DriverModule,
     ],
     entryComponents: [],
     providers: [],

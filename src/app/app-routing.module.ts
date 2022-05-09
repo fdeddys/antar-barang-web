@@ -14,6 +14,7 @@ import { AccessMatrixComponent } from './entities/access-matrix/access-matrix.co
 import { DashboardComponent } from './entities/dashboard/dashboard.component';
 import { CustomerComponent } from './entities/customer/customer.component';
 import { SellerComponent } from './entities/seller/seller.component';
+import { DriverComponent } from './entities/driver/driver.component';
 
 
 
@@ -33,6 +34,7 @@ const routes: Routes = [
                     { path: '404', component: Page404Component },
                     { path: 'seller', component: SellerComponent },
                     { path: 'customer', component: CustomerComponent },
+                    { path: 'driver', component: DriverComponent },
                     { path: 'user', component: UserComponent },
                     { path: 'lookup', component: LookupComponent },
                     { path: 'role', component: RoleComponent },
