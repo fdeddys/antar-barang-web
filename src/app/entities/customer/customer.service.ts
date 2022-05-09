@@ -39,6 +39,12 @@ export class CustomerService {
             .pipe(map((res: EntityResponseType) => this.convertResponse(res)));
     }
 
+    update(customer: Customer): Observable<EntityResponseType> {
+      const copy = this.convert(customer);
+      return this.http.put<Customer>(`${this.serverUrl}`, copy, { observe: 'response'})
+          .pipe(map((res: EntityResponseType) => this.convertResponse(res)));
+  }
+
     private convert( customer: Customer): Customer {
         const copy: Customer = Object.assign({}, customer);
         return copy;

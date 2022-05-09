@@ -4,6 +4,6 @@ ng build --prod
 cd dist
 
 echo "zip"
-zip -r antar-web.zip antar-web/
+zip -r antar.zip antar/
 
 echo "done"

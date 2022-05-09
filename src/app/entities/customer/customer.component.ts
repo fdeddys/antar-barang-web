@@ -14,6 +14,7 @@ import { CustomerModalComponent } from './customer-modal/customer-modal.componen
     styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
+    appname = "Customer"
 
     customers: Customer[];
     curPage = 1;

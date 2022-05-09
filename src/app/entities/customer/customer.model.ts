@@ -1,18 +1,16 @@
 export class Customer {
     constructor(
         public id?: number,
-        public code?: string,
+        public sellerId?: number,
+        public sellerName?:string,
+        public nama?: string,
+        public hp ?:string,
+        public alamat ?: string,
+        public coordinate ?: string,
         public status ?: number,
-        public name?: string,
-        public top ?: number,
-        public address1 ?: string,
-        public address2 ?: string,
-        public address3 ?: string,
-        public address4 ?: string,
-        public contactPerson?: string,
-        public phoneNumber?: string,
         public errCode?: string,
         public errDesc?: string,
+        public lastUpdateStr?: string,
     ) {
         this.id = 0,
         this.status = 10

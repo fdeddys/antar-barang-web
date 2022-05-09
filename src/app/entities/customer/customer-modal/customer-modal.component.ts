@@ -47,7 +47,7 @@ export class CustomerModalComponent implements OnInit {
     }
 
     save(): void {
-        // this.lookup.lookupGroup = this.lookupGroupSelected;
+      if (this.customer.id == 0 ) {
         this.customer.status = (this.statusSelected === 'Active' ? 1 : 0);
         this.customerService.save(this.customer).subscribe(result => {
             this.isFormDirty = true;
@@ -58,7 +58,22 @@ export class CustomerModalComponent implements OnInit {
             } else {
                 console.log('Toast err');
             }
-        });
+          });
+          return
+        }
+      this.customer.status = (this.statusSelected === 'Active' ? 1 : 0);
+      this.customerService.update(this.customer).subscribe(result => {
+          this.isFormDirty = true;
+          if (result.body.errCode === '00') {
+              console.log('success');
+              Swal.fire('Success', 'Save success ', 'info');
+              this.modalService.dismissAll('refresh');
+          } else {
+              console.log('Toast err');
+          }
+      });
+
+        // this.lookup.lookupGroup = this.lookupGroupSelected;
     }
 
     closeForm(): void {

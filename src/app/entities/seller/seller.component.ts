@@ -16,6 +16,7 @@ import { Location } from '@angular/common';
 })
 export class SellerComponent implements OnInit {
 
+    appname = "Seller"
     sellers: Seller[];
     curPage = 1;
     totalData = 0;

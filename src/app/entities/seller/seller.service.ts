@@ -34,6 +34,12 @@ export class SellerService {
         return this.http.post<SellerPageDto>(newresourceUrl, req['filter'], { observe: 'response' });
     }
 
+    update(seller: Seller): Observable<EntityResponseType> {
+      const copy = this.convert(seller);
+      return this.http.put<Seller>(`${this.serverUrl}`, copy, { observe: 'response'})
+          .pipe(map((res: EntityResponseType) => this.convertResponse(res)));
+    }
+
     save(seller: Seller): Observable<EntityResponseType> {
         const copy = this.convert(seller);
         return this.http.post<Seller>(`${this.serverUrl}`, copy, { observe: 'response'})
