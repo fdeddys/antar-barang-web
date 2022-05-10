@@ -14,6 +14,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { CustomerModule } from './customer/customer.module';
 import { SellerModule } from './seller/seller.module';
 import { DriverModule } from './driver/driver.module';
+import { TransaksiModule } from './transaksi/transaksi.module';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { DriverModule } from './driver/driver.module';
         CustomerModule,
         SellerModule,
         DriverModule,
+        TransaksiModule,
     ],
     entryComponents: [],
     providers: [],
