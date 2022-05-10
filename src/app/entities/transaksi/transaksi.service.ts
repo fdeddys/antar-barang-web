@@ -37,8 +37,14 @@ export class TransaksiService {
 
     newTransaksi(transaksi: Transaksi): Observable<EntityResponseType> {
       const copy = this.convert(transaksi);
-      return this.http.put<Transaksi>(`${this.serverUrl}`, copy, { observe: 'response'})
+      return this.http.post<Transaksi>(`${this.serverUrl}`, copy, { observe: 'response'})
           .pipe(map((res: EntityResponseType) => this.convertResponse(res)));
+    }
+
+    update(transaksi: Transaksi): Observable<EntityResponseType> {
+        const copy = this.convert(transaksi);
+        return this.http.put<Transaksi>(`${this.serverUrl}`, copy, { observe: 'response'})
+            .pipe(map((res: EntityResponseType) => this.convertResponse(res)));
     }
 
     private convert( transaksi: Transaksi): Transaksi {

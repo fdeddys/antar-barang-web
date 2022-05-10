@@ -15,6 +15,7 @@ import { DashboardComponent } from './entities/dashboard/dashboard.component';
 import { CustomerComponent } from './entities/customer/customer.component';
 import { SellerComponent } from './entities/seller/seller.component';
 import { DriverComponent } from './entities/driver/driver.component';
+import { NewTransaksiComponent } from './entities/transaksi/new-transaksi/new-transaksi.component';
 
 
 
@@ -36,6 +37,7 @@ const routes: Routes = [
                     { path: 'customer', component: CustomerComponent },
                     { path: 'driver', component: DriverComponent },
                     { path: 'user', component: UserComponent },
+                    { path: 'transaksi', component: NewTransaksiComponent },
                     { path: 'lookup', component: LookupComponent },
                     { path: 'role', component: RoleComponent },
                     { path: 'system-parameter', component: SystemParameterComponent },

@@ -1,0 +1,88 @@
+<style>
+    input {
+        width: 100%;
+    }
+</style>
+<div class="modal-header" *ngIf="statusRec!=='View'">
+    <h4 class="modal-title">
+        <span class="badge badge-light" style="color:cornflowerblue">New Transaksi</span>
+    </h4>
+</div>
+<div class="modal-body">
+    <table class="table table-sm table-striped">
+        <tr>
+            <th colspan="2">
+                <button type="button" class="btn btn-outline-primary" style="color:green">
+                    Status <span class="badge badge-light" style="color:red"> {{statusRec}} </span>
+                    <span class="badge badge-light" style="color:purple"> {{viewMsg}}</span>
+                    <span class="sr-only">unread messages</span>
+                </button>
+            </th>
+        </tr>
+        <tr>
+            <td>Seller</td>
+            <td *ngIf="sellers">
+                <select [(ngModel)]="sellerSelected" style="width: 80%;"  class="form-control" [ngModelOptions]="{standalone: true}">
+                    <option *ngFor="let seller of sellers" [value]="seller.id">
+                        {{seller.nama}}
+                    </option>
+                </select>
+        </tr>
+        <tr>
+            <td>Tanggal Antar</td>
+            <td>
+                <!-- <input type="text"  size="50%" [(ngModel)]=transaksi.tanggalRequestAntar> -->
+                <!-- <input type="text" style="width: 30%" 
+                    ngbDatepicker 
+                    #d="ngbDatepicker" 
+                    [(ngModel)]="tanggalAntar"
+                    [minDate]="minDate"
+                    [maxDate]="maxDate"
+                    />
+                <button (click)="d.toggle()">Pilih tanggal</button> -->
+                <ngb-datepicker
+                    #d
+                    [(ngModel)]="tanggalAntar"
+                    [minDate]="tanggalMin"
+                    [startDate]="tanggalMin"
+                    [maxDate]="tanggalMax"
+                >
+                </ngb-datepicker> 
+                <!-- <h3>
+                    {{tanggalAntar.day}} - {{tanggalAntar.month}} - {{tanggalAntar.year }}
+                </h3> -->
+            </td>
+        </tr>
+        <tr>
+            <td>Jam Antar</td>
+            <td>
+                <!-- <input type="text" maxlength="250" size="50%" [(ngModel)]=transaksi.jamRequestAntar> -->
+                <ngb-timepicker 
+                    [(ngModel)]="jamAntar"></ngb-timepicker>
+            </td>
+        </tr>
+        <tr>
+            <td>Nama Barang</td>
+            <td><input type="text" maxlength="250" style="width: 80%;" [(ngModel)]=transaksi.nama></td>
+        </tr>
+        <tr>
+            <td>Keterangan</td>
+            <td><input type="text" maxlength="250" size="50%" [(ngModel)]=transaksi.keterangan></td>
+        </tr>
+        <tr>
+            <td>Customer</td>
+            <td><input type="text"  size="50%" [(ngModel)]=transaksi.idCustomer></td>
+        </tr>
+
+    </table>
+</div>
+<div class="modal-footer">
+    <div *ngIf="statusRec!=='View' ">
+        <button type="button" class="btn btn-outline-danger" (click)="save()">Save
+            <i class="fa fa-save fa-lg"></i>
+        </button>
+        <button type="button" class="btn btn-outline-dark" (click)="closeForm()">Close
+            <i class="fa fa-times fa-lg"></i>
+        </button>
+    </div>
+</div>
