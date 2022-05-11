@@ -64,8 +64,14 @@ export class TransaksiModalComponent implements OnInit {
             nama: "PLEASE SELECT SELLER",
             kode:"",
         })
+        this.sellerSelected =0;
         this.loadSeller();
 
+        this.customers.push({
+            id:0,
+            nama: "PLEASE SELECT CUSTOMER",
+        })
+        this.customerSelected=0;
 
         var todayDate = new Date();
         var maxDate = new Date();
@@ -161,10 +167,13 @@ export class TransaksiModalComponent implements OnInit {
                     return;
                 }
                 this.sellers= this.sellers.concat(response.body.contents);
-                if (this.transaksi.id === 0) {
+                console.log("1. sellers")
+                if (this.transaksi.id == 0) {
                     this.transaksi.idSeller = this.sellers[0].id;
+                    console.log("2. sellers : ",this.sellers[0].id)
                 }
                 this.sellerSelected = this.transaksi.idSeller;
+                console.log("3. sellers : ",this.sellerSelected)
             });
     }
 
@@ -192,7 +201,7 @@ export class TransaksiModalComponent implements OnInit {
     }
 
     setDefaultValue() {
-        this.transaksi= {};
+        this.transaksi= new Transaksi();
         this.statusSelected = this.statuses[0];
     }
 
@@ -234,4 +243,17 @@ export class TransaksiModalComponent implements OnInit {
         }
     }
 
+    selectSeller(event) {
+        console.log(event);
+        this.customers=[];
+        this.customers.push({
+            id:0,
+            nama: "PLEASE SELECT CUSTOMER",
+        })
+        this.customerSelected=0;
+        if (event == 0 ) {
+            return
+        }
+        this.loadCustomer(event);
+    }
 }

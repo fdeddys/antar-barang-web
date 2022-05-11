@@ -22,7 +22,10 @@
         <tr>
             <td>Seller</td>
             <td *ngIf="sellers">
-                <select [(ngModel)]="sellerSelected" style="width: 80%;"  class="form-control" [ngModelOptions]="{standalone: true}">
+                <select [(ngModel)]="sellerSelected" 
+                    style="width: 80%;"  class="form-control" 
+                    (ngModelChange)="selectSeller($event)"
+                    [ngModelOptions]="{standalone: true}">
                     <option *ngFor="let seller of sellers" [value]="seller.id">
                         {{seller.nama}}
                     </option>
@@ -71,7 +74,16 @@
         </tr>
         <tr>
             <td>Customer</td>
-            <td><input type="text"  size="50%" [(ngModel)]=transaksi.idCustomer></td>
+            <td>
+                <!-- <input type="text"  size="50%" [(ngModel)]=transaksi.idCustomer> -->
+                <select [(ngModel)]="customerSelected" 
+                    style="width: 80%;"  class="form-control" 
+                    [ngModelOptions]="{standalone: true}">
+                    <option *ngFor="let customer of customers" [value]="customer.id">
+                        {{customer.nama}}
+                    </option>
+                </select>
+            </td>
         </tr>
 
     </table>

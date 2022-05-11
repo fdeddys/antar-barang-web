@@ -35,24 +35,30 @@
                         <th></th>
                         <th scope="col">Tgl Transaksi</th>
                         <th scope="col">Seller</th>
-                        <th scope="col">Tgl Request Antar</th>
+                        <th scope="col">Tgl Antar</th>
+                        <th scope="col">Jam Antar</th>
+                        <th scope="col">Barang</th>
                         <th scope="col">Customer</th>
                         <th scope="col">Driver</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Last Update</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let transaksi of transaksis">
                         <td>
-                            <button type="button" (click)="open('edit', transaksi)" class="btn btn-outline-warning btn-sm">
+                            <!-- <button type="button" (click)="open('edit', transaksi)" class="btn btn-outline-warning btn-sm">
                                 <i class="fa fa-list fa-lg"></i>
-                            </button>
+                            </button> -->
                         </td>
                         <td>{{transaksi.transaksiDateStr}}</td>
                         <td>{{transaksi.sellerName}}</td>
-                        <td>{{transaksi.tanggalRequestAntar / transaksi.jamRequestAntar}}</td>
+                        <td>{{transaksi.tanggalRequestAntarStr}}</td> 
+                        <td>{{transaksi.jamRequestAntar}}</td>
+                        <td>{{transaksi.namaProduct}}</td>
                         <td>{{transaksi.customerName}}</td>
                         <td>{{transaksi.driverName}}</td>
+                        <td>{{getStatus(transaksi.status)}}</td>
                         <td>{{transaksi.lastUpdateStr}}</td>
                     </tr>
                 </tbody>

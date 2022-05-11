@@ -94,6 +94,29 @@ export class NewTransaksiComponent implements OnInit {
         console.log('error..');
     }
 
+    getStatus(status: number) {
+        switch (status) {
+            case 1:
+                return "NEW"
+                break;
+            case 2:
+                return "ON_PROCCESS"
+                break;
+            case 3:
+                return "ON_THE_WAY"
+                break;
+            case 4:
+                return "DONE"
+                break;
+            case 5:
+                return "CANCEL"
+                break;
+            default:
+                return "UNKNOWN " + status
+                break;
+        }
+    }
+
     resetFilter() {
         this.searchTerm = {
             kode: '',

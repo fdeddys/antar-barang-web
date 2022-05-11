@@ -4,6 +4,7 @@ export class Transaksi {
       public transaksiDate?: number,
       public transaksiDateStr?: string,
       public tanggalRequestAntar?: number,
+      public tanggalRequestAntarStr?: string,
       public jamRequestAntar ?: string,
       public namaProduct ?: string,
       public coordinateTujuan ?: string,
