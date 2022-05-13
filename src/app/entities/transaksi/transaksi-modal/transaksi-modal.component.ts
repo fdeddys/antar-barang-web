@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NgbModal, NgbCalendar, NgbDateStruct, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Component, Injectable, Input, OnInit } from '@angular/core';
+import { NgbModal, NgbCalendar, NgbDateStruct, NgbTimeStruct, NgbTimeAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { Transaksi } from '../transaksi.model';
 import { TransaksiService } from '../transaksi.service';
 import Swal from 'sweetalert2';
@@ -10,10 +10,35 @@ import { CustomerService } from '../../customer/customer.service';
 import { Customer, CustomerPageDto } from '../../customer/customer.model';
 import { forkJoin } from 'rxjs';
 
+
+const pad = (i: number): string => i < 10 ? `0${i}` : `${i}`;
+
+
+@Injectable()
+export class NgbTimeStringAdapter extends NgbTimeAdapter<string> {
+
+  fromModel(value: string| null): NgbTimeStruct | null {
+    if (!value) {
+      return null;
+    }
+    const split = value.split(':');
+    return {
+      hour: parseInt(split[0], 10),
+      minute: parseInt(split[1], 10),
+      second: parseInt(split[2], 10)
+    };
+  }
+
+  toModel(time: NgbTimeStruct | null): string | null {
+    return time != null ? `${pad(time.hour)}:${pad(time.minute)}:${pad(time.second)}` : null;
+  }
+}
+
 @Component({
   selector: 'op-transaksi-modal',
   templateUrl: './transaksi-modal.component.html',
-  styleUrls: ['./transaksi-modal.component.css']
+  styleUrls: ['./transaksi-modal.component.css'],
+  providers: [{provide: NgbTimeAdapter, useClass: NgbTimeStringAdapter}]
 })
 export class TransaksiModalComponent implements OnInit {
 
@@ -36,7 +61,8 @@ export class TransaksiModalComponent implements OnInit {
     tanggalMax: NgbDateStruct;
     tanggalMin: NgbDateStruct;
 
-    jamAntar: NgbTimeStruct; 
+    jamAntar="09:00:00"
+    //: NgbTimeStruct;
 
     constructor(
         public transaksiService: TransaksiService,
@@ -83,8 +109,8 @@ export class TransaksiModalComponent implements OnInit {
         this.tanggalAntar =  { year: todayDate.getFullYear(), month: todayDate.getMonth(), day: todayDate.getDate() };
         this.tanggalMax= { year: maxDate.getFullYear(), month: maxDate.getMonth(), day: maxDate.getDate() };
         this.tanggalMin = { year: minDate.getFullYear(), month: minDate.getMonth(), day:minDate.getDate() };
-    
-        this.jamAntar = {hour: 9, minute: 0, second:0};
+
+        // this.jamAntar = {hour: 9, minute: 0, second:0};
     }
 
     // loadData(transaksiId: number) {
@@ -207,8 +233,15 @@ export class TransaksiModalComponent implements OnInit {
 
     save(): void {
         // this.lookup.lookupGroup = this.lookupGroupSelected;
-        this.transaksi.status = 1;
-        this.isFormDirty = true;
+        this.transaksi.status = 1
+        this.isFormDirty = true
+        this.transaksi.idSeller = +this.sellerSelected
+        this.transaksi.idCustomer = +this.customerSelected
+        let tgl  = new Date(this.tanggalAntar.year, this.tanggalAntar.month, this.tanggalAntar.day)
+        let tglIso = Math.floor (tgl.getTime()/1000)
+        this.transaksi.tanggalRequestAntar = tglIso
+        this.transaksi.jamRequestAntar = this.jamAntar
+        //this.jamAntar.hour + ":" + this.jamAntar.minute + ":00"
 
         if (this.transaksi.id ==0) {
             this.transaksiService.newTransaksi(this.transaksi).subscribe(result => {

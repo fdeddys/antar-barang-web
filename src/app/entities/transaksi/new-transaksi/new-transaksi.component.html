@@ -5,13 +5,13 @@
             <form>
                 <div class="row">
                     <div class="col-md-3 mb-3">
-                        <label for="lookupNameInput">Nama</label>
-                        <input type="text" class="form-control" id="lookupNameInput" [(ngModel)]='searchTerm.nama'
+                        <label for="lookupNameInput">Nama Supplier</label>
+                        <input type="text" class="form-control" id="lookupNameInput" [(ngModel)]='searchTerm.namaSupplier'
                             name="searchName" placeholder="Enter Name">
                     </div>
                     <div class="col-md-3 mb-3">
-                        <label for="lookupKodeInput">Kode</label>
-                        <input type="text" class="form-control" id="lookupKodeInput" [(ngModel)]='searchTerm.kode'
+                        <label for="lookupKodeInput">Nama Driver</label>
+                        <input type="text" class="form-control" id="lookupKodeInput" [(ngModel)]='searchTerm.namaDriver'
                             name="searchKode" placeholder="Enter kode">
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                         </td>
                         <td>{{transaksi.transaksiDateStr}}</td>
                         <td>{{transaksi.sellerName}}</td>
-                        <td>{{transaksi.tanggalRequestAntarStr}}</td> 
+                        <td>{{transaksi.tanggalRequestAntarStr}}</td>
                         <td>{{transaksi.jamRequestAntar}}</td>
                         <td>{{transaksi.namaProduct}}</td>
                         <td>{{transaksi.customerName}}</td>

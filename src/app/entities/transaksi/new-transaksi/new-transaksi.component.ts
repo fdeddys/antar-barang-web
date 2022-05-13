@@ -21,8 +21,8 @@ export class NewTransaksiComponent implements OnInit {
     totalData = 0;
     totalRecord = TOTAL_RECORD_PER_PAGE;
     searchTerm = {
-        kode: '',
-        nama: '',
+        namaSupplier: '',
+        namaDriver: '',
     };
     closeResult: string;
     constructor(private route: ActivatedRoute,
@@ -96,9 +96,12 @@ export class NewTransaksiComponent implements OnInit {
 
     getStatus(status: number) {
         switch (status) {
-            case 1:
+            case 0:
                 return "NEW"
                 break;
+            case 1:
+              return "NEW"
+              break;
             case 2:
                 return "ON_PROCCESS"
                 break;
@@ -119,8 +122,8 @@ export class NewTransaksiComponent implements OnInit {
 
     resetFilter() {
         this.searchTerm = {
-            kode: '',
-            nama: '',
+            namaSupplier: '',
+            namaDriver: '',
         };
         this.loadAll(1);
     }
@@ -132,4 +135,9 @@ export class NewTransaksiComponent implements OnInit {
     goBack() {
         this.location.back();
     }
+
+    save() {
+
+    }
+
 }

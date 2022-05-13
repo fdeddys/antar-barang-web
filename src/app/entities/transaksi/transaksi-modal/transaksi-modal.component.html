@@ -22,8 +22,8 @@
         <tr>
             <td>Seller</td>
             <td *ngIf="sellers">
-                <select [(ngModel)]="sellerSelected" 
-                    style="width: 80%;"  class="form-control" 
+                <select [(ngModel)]="sellerSelected"
+                    style="width: 80%;"  class="form-control"
                     (ngModelChange)="selectSeller($event)"
                     [ngModelOptions]="{standalone: true}">
                     <option *ngFor="let seller of sellers" [value]="seller.id">
@@ -35,9 +35,9 @@
             <td>Tanggal Antar</td>
             <td>
                 <!-- <input type="text"  size="50%" [(ngModel)]=transaksi.tanggalRequestAntar> -->
-                <!-- <input type="text" style="width: 30%" 
-                    ngbDatepicker 
-                    #d="ngbDatepicker" 
+                <!-- <input type="text" style="width: 30%"
+                    ngbDatepicker
+                    #d="ngbDatepicker"
                     [(ngModel)]="tanggalAntar"
                     [minDate]="minDate"
                     [maxDate]="maxDate"
@@ -50,7 +50,7 @@
                     [startDate]="tanggalMin"
                     [maxDate]="tanggalMax"
                 >
-                </ngb-datepicker> 
+                </ngb-datepicker>
                 <!-- <h3>
                     {{tanggalAntar.day}} - {{tanggalAntar.month}} - {{tanggalAntar.year }}
                 </h3> -->
@@ -60,13 +60,13 @@
             <td>Jam Antar</td>
             <td>
                 <!-- <input type="text" maxlength="250" size="50%" [(ngModel)]=transaksi.jamRequestAntar> -->
-                <ngb-timepicker 
+                <ngb-timepicker
                     [(ngModel)]="jamAntar"></ngb-timepicker>
             </td>
         </tr>
         <tr>
             <td>Nama Barang</td>
-            <td><input type="text" maxlength="250" style="width: 80%;" [(ngModel)]=transaksi.nama></td>
+            <td><input type="text" maxlength="250" style="width: 80%;" [(ngModel)]=transaksi.namaProduct></td>
         </tr>
         <tr>
             <td>Keterangan</td>
@@ -76,8 +76,8 @@
             <td>Customer</td>
             <td>
                 <!-- <input type="text"  size="50%" [(ngModel)]=transaksi.idCustomer> -->
-                <select [(ngModel)]="customerSelected" 
-                    style="width: 80%;"  class="form-control" 
+                <select [(ngModel)]="customerSelected"
+                    style="width: 80%;"  class="form-control"
                     [ngModelOptions]="{standalone: true}">
                     <option *ngFor="let customer of customers" [value]="customer.id">
                         {{customer.nama}}
