@@ -1,17 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Transaksi, TransaksiPageDto } from '../transaksi.model';
 import { TOTAL_RECORD_PER_PAGE } from '../../../shared/constants/base-constant';
 import { ActivatedRoute } from '@angular/router';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDismissReasons, NgbModal, NgbDateStruct, NgbDateAdapter, NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { TransaksiService } from '../transaksi.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { TransaksiModalComponent } from '../transaksi-modal/transaksi-modal.component';
 
+@Injectable()
+export class CustomAdapter extends NgbDateAdapter<string> {
+
+  readonly DELIMITER = '-';
+
+  fromModel(value: string | null): NgbDateStruct | null {
+    if (value) {
+      const date = value.split(this.DELIMITER);
+      return {
+        day : parseInt(date[0], 10),
+        month : parseInt(date[1], 10),
+        year : parseInt(date[2], 10)
+      };
+    }
+    return null;
+  }
+
+  toModel(date: NgbDateStruct | null): string | null {
+    return date ? date.day + this.DELIMITER + date.month + this.DELIMITER + date.year : null;
+  }
+}
+
 @Component({
   selector: 'op-new-transaksi',
   templateUrl: './new-transaksi.component.html',
-  styleUrls: ['./new-transaksi.component.css']
+  styleUrls: ['./new-transaksi.component.css'],
+  providers: [
+    // {provide: NgbDateAdapter, useClass: CustomAdapter},
+  ]
 })
 export class NewTransaksiComponent implements OnInit {
 
@@ -21,16 +46,28 @@ export class NewTransaksiComponent implements OnInit {
     totalData = 0;
     totalRecord = TOTAL_RECORD_PER_PAGE;
     searchTerm = {
-        namaSupplier: '',
-        namaDriver: '',
+        sellerName: '',
+        driverName: '',
+        customerName: '',
+        status:'',
+        tgl1:'',
+        tgl2:''
     };
     closeResult: string;
+    tgl1: NgbDateStruct;
+    tgl2: NgbDateStruct;
+    // tgl1:''
+    // tgl2:''
+    
     constructor(private route: ActivatedRoute,
         private modalService: NgbModal,
         private transaksiService: TransaksiService,
         private location: Location, ) { }
 
     ngOnInit() {
+        var todayDate = new Date();
+        this.tgl1 = { year: todayDate.getFullYear(), month: todayDate.getMonth()+1, day: todayDate.getDate() };
+        this.tgl2 = { year: todayDate.getFullYear(), month: todayDate.getMonth()+1, day: todayDate.getDate() };
         this.loadAll(this.curPage);
     }
 
@@ -39,6 +76,9 @@ export class NewTransaksiComponent implements OnInit {
     }
 
     loadAll(page) {
+        this.searchTerm.tgl1 = this.tgl1.year + "-" + this.tgl1.month + "-"+ this.tgl1.day
+        this.searchTerm.tgl2 = this.tgl2.year + "-" + this.tgl2.month + "-"+ this.tgl2.day
+
         this.transaksiService.filter({
             filter: this.searchTerm,
             page: page,
@@ -122,8 +162,12 @@ export class NewTransaksiComponent implements OnInit {
 
     resetFilter() {
         this.searchTerm = {
-            namaSupplier: '',
-            namaDriver: '',
+            sellerName: '',
+            driverName: '',
+            customerName: '',
+            status:'',
+            tgl1:'',
+            tgl2:''
         };
         this.loadAll(1);
     }
@@ -140,4 +184,7 @@ export class NewTransaksiComponent implements OnInit {
 
     }
 
+    onDateSelection(date: NgbDate) {
+        console.log(date)
+      }
 }

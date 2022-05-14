@@ -6,13 +6,49 @@
                 <div class="row">
                     <div class="col-md-3 mb-3">
                         <label for="lookupNameInput">Nama Supplier</label>
-                        <input type="text" class="form-control" id="lookupNameInput" [(ngModel)]='searchTerm.namaSupplier'
+                        <input type="text" class="form-control" id="lookupNameInput" [(ngModel)]='searchTerm.sellerName'
                             name="searchName" placeholder="Enter Name">
                     </div>
                     <div class="col-md-3 mb-3">
-                        <label for="lookupKodeInput">Nama Driver</label>
-                        <input type="text" class="form-control" id="lookupKodeInput" [(ngModel)]='searchTerm.namaDriver'
-                            name="searchKode" placeholder="Enter kode">
+                        <label for="customerName">Customer</label>
+                        <input type="text" class="form-control" id="customerName" [(ngModel)]='searchTerm.customerName'
+                            name="customerName" placeholder="Enter Name">
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <label for="tgl1">Tanggal transaksi dari</label> 
+                        <div class="input-group">
+                            <input 
+                                class="form-control" 
+                                placeholder="yyyy-mm-dd"
+                                [(ngModel)]="tgl1"
+                                name="tgl1" 
+                                ngbDatepicker #d1="ngbDatepicker"
+                            >
+                            <!-- <input class="form-control" 
+                                placeholder="yyyy-mm-dd"
+                                [(ngModel)]="tgl1" 
+                                (dateSelect)="onDateSelect($event)"/
+                                [displayMonths]="1" [navigation]="select" [outsideDays]="visible"
+                                [showWeekNumbers]="true" 
+                                ngbDatepicker 
+                                #d1="ngbDatepicker"> -->
+                            <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button">
+                                <i class="fa fa-calendar fa-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <label for="lookupKodeInput">s/d</label>
+                        <div class="input-group">
+                            <input class="form-control" placeholder="yyyy-mm-dd"
+                                [(ngModel)]="tgl2"
+                                name="tgl2" 
+                                [displayMonths]="1" [navigation]="select" [outsideDays]="visible"
+                                [showWeekNumbers]="true" ngbDatepicker #d2="ngbDatepicker">
+                            <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button">
+                                <i class="fa fa-calendar fa-lg"></i>
+                            </button>
+                        </div>                
                     </div>
                 </div>
                 <div class="btn-group" role="group">
