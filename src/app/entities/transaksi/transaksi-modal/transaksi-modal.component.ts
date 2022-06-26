@@ -103,12 +103,14 @@ export class TransaksiModalComponent implements OnInit {
         var maxDate = new Date();
         var minDate = new Date();
 
-        todayDate.setDate(todayDate.getDate() + 1);
-        maxDate.setDate(todayDate.getDate()+60);
-
+        todayDate.setDate(todayDate.getDate() + 30);
+        maxDate.setDate(todayDate.getDate()+150);
+        // this.tanggalAntar = this.calendar.getToday()
+        // this.tanggalMin = this.calendar.getToday()
         this.tanggalAntar =  { year: todayDate.getFullYear(), month: todayDate.getMonth(), day: todayDate.getDate() };
+        console.log("tanggal antar ", this.tanggalAntar)
         this.tanggalMax= { year: maxDate.getFullYear(), month: maxDate.getMonth(), day: maxDate.getDate() };
-        this.tanggalMin = { year: minDate.getFullYear(), month: minDate.getMonth(), day:minDate.getDate() };
+        this.tanggalMin = { year: minDate.getFullYear(), month: minDate.getMonth()+1, day:minDate.getDate() };
 
         // this.jamAntar = {hour: 9, minute: 0, second:0};
     }
@@ -237,9 +239,9 @@ export class TransaksiModalComponent implements OnInit {
         this.isFormDirty = true
         this.transaksi.idSeller = +this.sellerSelected
         this.transaksi.idCustomer = +this.customerSelected
-        let tgl  = new Date(this.tanggalAntar.year, this.tanggalAntar.month, this.tanggalAntar.day)
-        let tglIso = Math.floor (tgl.getTime()/1000)
-        this.transaksi.tanggalRequestAntar = tglIso
+        let tgl  = (this.tanggalAntar.year +"-"+ this.tanggalAntar.month + "-"+ this.tanggalAntar.day)
+        // let tglIso = Math.floor (tgl.getTime()/1000)
+        this.transaksi.tanggalRequestAntar = tgl.toString()
         this.transaksi.jamRequestAntar = this.jamAntar
         //this.jamAntar.hour + ":" + this.jamAntar.minute + ":00"
 

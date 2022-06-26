@@ -3,7 +3,7 @@ export class Transaksi {
       public id?: number,
       public transaksiDate?: number,
       public transaksiDateStr?: string,
-      public tanggalRequestAntar?: number,
+      public tanggalRequestAntar?: string,
       public tanggalRequestAntarStr?: string,
       public jamRequestAntar ?: string,
       public namaProduct ?: string,
@@ -26,7 +26,11 @@ export class Transaksi {
       public lastUpdateBy ?: string,
       public lastUpdateStr ?: string,
       public status ?: number,
-
+      public regionalSeller?: number,
+      public regionalCustomer?: number,
+      public regionalGroupSeller?: string,
+      public regionalGroupCustomer?: string,
+      
       public errCode?: string,
       public errDesc?: string,
   ) {

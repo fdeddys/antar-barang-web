@@ -16,6 +16,8 @@ import { CustomerComponent } from './entities/customer/customer.component';
 import { SellerComponent } from './entities/seller/seller.component';
 import { DriverComponent } from './entities/driver/driver.component';
 import { NewTransaksiComponent } from './entities/transaksi/new-transaksi/new-transaksi.component';
+import { RegionalGroupComponent } from './entities/regional-group/regional-group.component';
+import { RegionalComponent } from './entities/regional/regional.component';
 
 
 
@@ -37,6 +39,8 @@ const routes: Routes = [
                     { path: 'customer', component: CustomerComponent },
                     { path: 'driver', component: DriverComponent },
                     { path: 'user', component: UserComponent },
+                    { path: 'regional-group', component: RegionalGroupComponent },
+                    { path: 'regional', component: RegionalComponent },
                     { path: 'transaksi', component: NewTransaksiComponent },
                     { path: 'lookup', component: LookupComponent },
                     { path: 'role', component: RoleComponent },

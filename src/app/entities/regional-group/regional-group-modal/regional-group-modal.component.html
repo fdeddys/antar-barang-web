@@ -5,7 +5,7 @@
 </style>
 <div class="modal-header" *ngIf="statusRec!=='View'">
     <h4 class="modal-title">
-        <span class="badge badge-light" style="color:cornflowerblue">Seller</span>
+        <span class="badge badge-light" style="color:cornflowerblue">RegionalGroup</span>
     </h4>
 </div>
 <div class="modal-body">
@@ -21,29 +21,11 @@
         </tr>
         <tr>
             <td>Code</td>
-            <td><input type="text" disabled size="50%" [(ngModel)]=seller.kode></td>
+            <td><input type="text" disabled size="50%" [(ngModel)]=regionalGroup.id></td>
         </tr>
         <tr>
             <td>Name</td>
-            <td><input type="text" maxlength="250" size="50%" [(ngModel)]=seller.nama></td>
-        </tr>
-        <tr >
-            <td>Regional </td>
-            <td>
-                <select [(ngModel)]="regionalSelected" [ngModelOptions]="{standalone: true}" style="width: 50%;">
-                    <option *ngFor="let regional of regionals" [value]="regional.id">
-                        {{regional.nama}} 
-                    </option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>Alamat</td>
-            <td><input type="text" maxlength="250" size="50%" [(ngModel)]=seller.alamat></td>
-        </tr>
-        <tr>
-            <td>HP</td>
-            <td><input type="text" maxlength="250" size="50%" [(ngModel)]=seller.hp></td>
+            <td><input type="text" maxlength="250" size="50%" [(ngModel)]=regionalGroup.nama></td>
         </tr>
         <tr>
             <td>Status</td>

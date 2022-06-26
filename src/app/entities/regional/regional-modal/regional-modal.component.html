@@ -21,51 +21,21 @@
         </tr>
         <tr>
             <td>ID</td>
-            <td><input type="text" disabled size="50%" [(ngModel)]=customer.id></td>
+            <td><input type="text" disabled size="50%" [(ngModel)]=regional.id></td>
         </tr>
         <tr>
             <td>Name</td>
-            <td><input type="text" maxlength="250" size="50%" [(ngModel)]=customer.nama></td>
+            <td><input type="text" maxlength="250" size="50%" [(ngModel)]=regional.nama></td>
         </tr>
         <tr >
-            <td>Seller</td>
+            <td>Regional Group</td>
             <td>
-                <select [(ngModel)]="sellerSelected" [ngModelOptions]="{standalone: true}" style="width: 50%;">
-                    <option *ngFor="let seller of sellers" [value]="seller.id">
-                        {{seller.nama}} 
+                <select [(ngModel)]="regionalGroupSelected" [ngModelOptions]="{standalone: true}" style="width: 50%;">
+                    <option *ngFor="let regionalGroup of regionalGroups" [value]="regionalGroup.id">
+                        {{regionalGroup.nama}} 
                     </option>
                 </select>
             </td>
-        </tr>
-        <!-- <tr>
-            <td>Seller ID</td>
-            <td><input type="text" maxlength="250" size="50%" [(ngModel)]=customer.sellerId></td>
-        </tr> -->
-        <!-- <tr>
-            <td>Seller Nama</td>
-            <td><input type="text" maxlength="250" size="50%" [(ngModel)]=customer.sellerName></td>
-        </tr> -->
-        <tr>
-            <td>HP</td>
-            <td><input type="text" maxlength="250" size="50%" [(ngModel)]=customer.hp></td>
-        </tr>
-        <tr >
-            <td>Regional </td>
-            <td>
-                <select [(ngModel)]="regionalSelected" [ngModelOptions]="{standalone: true}" style="width: 50%;">
-                    <option *ngFor="let regional of regionals" [value]="regional.id">
-                        {{regional.nama}} 
-                    </option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>Alamat</td>
-            <td><input type="text" maxlength="250" size="50%" [(ngModel)]=customer.alamat></td>
-        </tr>
-        <tr>
-            <td>Coordinate</td>
-            <td><input type="text" maxlength="250" type="number" size="50%" [(ngModel)]=customer.coordinate>  </td>
         </tr>
         <tr>
             <td>Status</td>

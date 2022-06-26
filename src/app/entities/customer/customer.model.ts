@@ -10,7 +10,8 @@ export class Customer {
         public status ?: number,
         public errCode?: string,
         public errDesc?: string,
-        public lastUpdateStr?: string,
+        public regionalId?: number,
+        public regionalName?: string,
     ) {
         this.id = 0,
         this.status = 10

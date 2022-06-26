@@ -15,6 +15,8 @@ import { CustomerModule } from './customer/customer.module';
 import { SellerModule } from './seller/seller.module';
 import { DriverModule } from './driver/driver.module';
 import { TransaksiModule } from './transaksi/transaksi.module';
+import { RegionalGroupModule } from './regional-group/regional-group.module';
+import { RegionalModule } from './regional/regional.module';
 
 
 @NgModule({
@@ -33,6 +35,8 @@ import { TransaksiModule } from './transaksi/transaksi.module';
         SellerModule,
         DriverModule,
         TransaksiModule,
+        RegionalGroupModule,
+        RegionalModule
     ],
     entryComponents: [],
     providers: [],

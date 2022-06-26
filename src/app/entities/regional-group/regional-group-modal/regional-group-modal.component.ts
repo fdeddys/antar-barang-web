@@ -1,30 +1,29 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
-import { Seller } from '../seller.model';
-import { SellerService } from '../seller.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RegionalGroup } from '../regional-group.model';
+import { RegionalGroupService } from '../regional-group.service';
+
 
 @Component({
-  selector: 'op-seller-modal',
-  templateUrl: './seller-modal.component.html',
-  styleUrls: ['./seller-modal.component.css']
+  selector: 'op-regional-group-modal',
+  templateUrl: './regional-group-modal.component.html',
+  styleUrls: ['./regional-group-modal.component.css']
 })
-export class SellerModalComponent implements OnInit {
+export class RegionalGroupModalComponent implements OnInit {
 
     @Input() statusRec;
-    @Input() objEdit: Seller;
+    @Input() objEdit: RegionalGroup;
     @Input() viewMsg;
-    @Input() regionals;
 
-    regionalSelected: number;
     statuses = ['Active', 'Inactive'];
-    seller: Seller;
+    regionalGroup: RegionalGroup;
     statusSelected: string;
-    sellers: Seller[];
+    drivers: RegionalGroup[];
     isFormDirty: Boolean = false;
 
     constructor(
-        public sellerService: SellerService,
+        public regionalGroupService: RegionalGroupService,
         public modalService: NgbModal
     ) { }
 
@@ -34,9 +33,8 @@ export class SellerModalComponent implements OnInit {
         if (this.statusRec === 'addnew') {
             this.setDefaultValue();
         } else {
-            this.seller = this.objEdit;
-            this.regionalSelected = this.seller.regionalId;
-            if (this.seller.status === 1) {
+            this.regionalGroup = this.objEdit;
+            if (this.regionalGroup.status === 1) {
                 this.statusSelected = this.statuses[0];
             } else {
                 this.statusSelected = this.statuses[1];
@@ -45,20 +43,17 @@ export class SellerModalComponent implements OnInit {
     }
 
     setDefaultValue() {
-        this.seller= {};
-        this.seller.id = 0;
+        this.regionalGroup= {};
+        this.regionalGroup.id =0;
         this.statusSelected = this.statuses[0];
-
     }
 
     save(): void {
-        // this.lookup.lookupGroup = this.lookupGroupSelected;
-        this.seller.regionalId = +this.regionalSelected;
-        this.seller.status = (this.statusSelected === 'Active' ? 1 : 0);
+        this.regionalGroup.status = (this.statusSelected === 'Active' ? 1 : 0);
         this.isFormDirty = true;
 
-        if (this.seller.id ==0) {
-            this.sellerService.save(this.seller).subscribe(result => {
+        if (this.regionalGroup.id ==0) {
+            this.regionalGroupService.save(this.regionalGroup).subscribe(result => {
                 if (result.body.errCode === '00') {
                     console.log('success');
                     Swal.fire('Success', 'Save success ', 'info');
@@ -70,8 +65,7 @@ export class SellerModalComponent implements OnInit {
             return
         }
 
-        this.sellerService.update(this.seller).subscribe(result => {
-            // this.isFormDirty = true;
+        this.regionalGroupService.update(this.regionalGroup).subscribe(result => {
             if (result.body.errCode === '00') {
                 console.log('success');
                 Swal.fire('Success', 'Save success ', 'info');
@@ -89,6 +83,5 @@ export class SellerModalComponent implements OnInit {
             this.modalService.dismissAll('close');
         }
     }
-
-
+ 
 }

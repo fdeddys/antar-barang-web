@@ -8,6 +8,8 @@ export class Seller {
         public hp ?: string,
         public alamat ?: string,
         public status ?: number,
+        public regionalId?: number,
+        public regionalName?: string,
         public last_update_by ?: string,
         public last_update_str ?: string,
         public errCode?: string,

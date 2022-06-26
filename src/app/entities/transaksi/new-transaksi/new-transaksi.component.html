@@ -43,8 +43,8 @@
                             <input class="form-control" placeholder="yyyy-mm-dd"
                                 [(ngModel)]="tgl2"
                                 name="tgl2" 
-                                [displayMonths]="1" [navigation]="select" [outsideDays]="visible"
-                                [showWeekNumbers]="true" ngbDatepicker #d2="ngbDatepicker">
+                                [displayMonths]="1" 
+                                ngbDatepicker #d2="ngbDatepicker">
                             <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button">
                                 <i class="fa fa-calendar fa-lg"></i>
                             </button>
@@ -88,14 +88,14 @@
                             </button> -->
                         </td>
                         <td>{{transaksi.transaksiDateStr}}</td>
-                        <td>{{transaksi.sellerName}}</td>
+                        <td>{{transaksi.sellerName}} [ {{transaksi.regionalGroupSeller}} ]</td>
                         <td>{{transaksi.tanggalRequestAntarStr}}</td>
                         <td>{{transaksi.jamRequestAntar}}</td>
                         <td>{{transaksi.namaProduct}}</td>
-                        <td>{{transaksi.customerName}}</td>
+                        <td>{{transaksi.customerName}} [ {{transaksi.regionalGroupCustomer}} ]</td>
                         <td>{{transaksi.driverName}}</td>
                         <td>{{getStatus(transaksi.status)}}</td>
-                        <td>{{transaksi.lastUpdateStr}}</td>
+                        <td>{{transaksi.lastUpdateStr}} - {{transaksi.lastUpdateBy}}</td>
                     </tr>
                 </tbody>
             </table>

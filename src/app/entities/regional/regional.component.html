@@ -5,15 +5,15 @@
         <div>
             <form>
                 <div class="row">
-                    <!-- <div class="col-md-3 mb-3">
-                        <label for="lookupCodeInput">Code</label>
-                        <input type="text" class="form-control" id="lookupCodeInput" [(ngModel)]='searchTerm.code'
-                            name="searchCode" placeholder="Enter Code">
-                    </div> -->
                     <div class="col-md-3 mb-3">
-                        <label for="lookupNameInput">Name</label>
-                        <input type="text" class="form-control" id="lookupNameInput" [(ngModel)]='searchTerm.name'
+                        <label for="lookupNameInput">Nama</label>
+                        <input type="text" class="form-control" id="lookupNameInput" [(ngModel)]='searchTerm.nama'
                             name="searchName" placeholder="Enter Name">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="lookupKodeInput">Kode</label>
+                        <input type="text" class="form-control" id="lookupKodeInput" [(ngModel)]='searchTerm.kode'
+                            name="searchKode" placeholder="Enter kode">
                     </div>
                 </div>
                 <div class="btn-group" role="group">
@@ -33,30 +33,25 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Hp</th>
-                        <th scope="col">Seller</th>
-                        <th scope="col">Regional</th>
+                        <!-- <th scope="col">ID</th> -->
+                        <th scope="col">Name</th>
+                        <th scope="col">Group</th>
                         <th scope="col">Status</th>
                         <th scope="col">Last Update</th>
-                        <th scope="col">User</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let customer of customers">
+                    <tr *ngFor="let regional of regionals">
                         <td>
-                            <button type="button" (click)="open('edit', customer)" class="btn btn-outline-warning btn-sm">
+                            <button type="button" (click)="open('edit', regional)" class="btn btn-outline-warning btn-sm">
                                 <i class="fa fa-list fa-lg"></i>
                             </button>
-                            <!-- {{customer|json}} -->
                         </td>
-                        <td>{{customer.nama}}</td>
-                        <td>{{customer.hp}}</td>
-                        <td>{{customer.sellerName}}</td>
-                        <td>{{customer.regionalName}}</td>                       
-                        <td>{{ (customer.status==1 ?'Active' : 'Inactive') | uppercase }}</td>
-                        <td>{{customer.lastUpdate}}</td>
-                        <td>{{customer.lastUpdateBy}}</td>
+                        <!-- <td>{{regional.id}}</td> -->
+                        <td>{{regional.nama}}</td>
+                        <td>{{regional.regionalGroupName}}</td>
+                        <td>{{ (regional.status==1 ?'Active' : 'Inactive') | uppercase }}</td>
+                        <td>{{regional.lastUpdate}}</td>
                     </tr>
                 </tbody>
             </table>

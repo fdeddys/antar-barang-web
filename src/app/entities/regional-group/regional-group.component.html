@@ -4,7 +4,7 @@
         <!-- SEARCH -->
         <div>
             <form>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-3 mb-3">
                         <label for="lookupNameInput">Nama</label>
                         <input type="text" class="form-control" id="lookupNameInput" [(ngModel)]='searchTerm.nama'
@@ -15,12 +15,12 @@
                         <input type="text" class="form-control" id="lookupKodeInput" [(ngModel)]='searchTerm.kode'
                             name="searchKode" placeholder="Enter kode">
                     </div>
-                </div>
+                </div> -->
                 <div class="btn-group" role="group">
-                    <button type="button" (click)="onFilter()" class="btn mr-2 btn-outline-success btn-sm">Search <i
+                    <!-- <button type="button" (click)="onFilter()" class="btn mr-2 btn-outline-success btn-sm">Search <i
                         class="fa fa-search fa-lg"></i></button>
                     <button type="button" (click)="resetFilter()" class="btn btn-outline-danger btn-sm">Reset <i
-                        class="fa fa-refresh fa-lg"></i></button>
+                        class="fa fa-refresh fa-lg"></i></button> -->
                     <button type="button" class="btn btn-outline-primary btn-sm" (click)="open('addnew', null)">Addnew
                         <i class="fa fa-plus-circle fa-lg"></i></button>
 
@@ -34,29 +34,23 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th scope="col">Code</th>
+                        <th scope="col">ID</th>
                         <th scope="col">Name</th>
-                        <th scope="col">HP</th>
-                        <th scope="col">Regional</th>
                         <th scope="col">Status</th>
                         <th scope="col">Last Update</th>
-                        <th scope="col">User</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let seller of sellers">
+                    <tr *ngFor="let regionalGroup of regionalGroups">
                         <td>
-                            <button type="button" (click)="open('edit', seller)" class="btn btn-outline-warning btn-sm">
+                            <button type="button" (click)="open('edit', regionalGroup)" class="btn btn-outline-warning btn-sm">
                                 <i class="fa fa-list fa-lg"></i>
                             </button>
                         </td>
-                        <td>{{seller.kode}}</td>
-                        <td>{{seller.nama}}</td>
-                        <td>{{seller.hp}}</td>
-                        <td>{{seller.regionalName}}</td>
-                        <td>{{ (seller.status==1 ?'Active' : 'Inactive') | uppercase }}</td>
-                        <td>{{seller.lastUpdate}}</td>
-                        <td>{{seller.lastUpdateBy}}</td>
+                        <td>{{regionalGroup.id}}</td>
+                        <td>{{regionalGroup.nama}}</td>
+                        <td>{{ (regionalGroup.status==1 ?'Active' : 'Inactive') | uppercase }}</td>
+                        <td>{{regionalGroup.lastUpdate}}</td>
                     </tr>
                 </tbody>
             </table>

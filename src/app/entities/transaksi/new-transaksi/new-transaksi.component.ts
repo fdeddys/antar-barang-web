@@ -123,6 +123,7 @@ export class NewTransaksiComponent implements OnInit {
     }
 
     private onSuccess(data, headers) {
+        
         if (data.contents.length < 0) {
             return;
         }

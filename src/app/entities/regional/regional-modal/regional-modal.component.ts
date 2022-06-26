@@ -1,34 +1,33 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Customer } from '../customer.model';
-import { CustomerService } from '../customer.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { Regional } from '../regional.model';
+import { RegionalGroup } from '../../regional-group/regional-group.model';
+import { RegionalService } from '../regional.service';
+import { RegionalGroupService } from '../../regional-group/regional-group.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
-import { Seller } from '../../seller/seller.model';
-import { SellerService } from '../../seller/seller.service';
 
 @Component({
-    selector: 'op-customer-modal',
-    templateUrl: './customer-modal.component.html',
-    styleUrls: ['./customer-modal.component.css']
+  selector: 'op-regional-modal',
+  templateUrl: './regional-modal.component.html',
+  styleUrls: ['./regional-modal.component.css']
 })
-export class CustomerModalComponent implements OnInit {
+export class RegionalModalComponent implements OnInit {
 
     @Input() statusRec;
-    @Input() objEdit: Customer;
-    @Input() sellers: Seller[];
+    @Input() objEdit: Regional;
+    @Input() regionalGroups: RegionalGroup[];
     @Input() viewMsg;
-    @Input() regionals;
 
     statuses = ['Active', 'Inactive'];
-    customer: Customer;
-    regionalSelected: number;
-    sellerSelected: number;
+    regional: Regional;
+    
+    regionalGroupSelected: number;
     statusSelected: string;
-    customers: Customer[];
+    regionals: Regional[];
     isFormDirty: Boolean = false;
 
     constructor(
-        public customerService: CustomerService,
+        public regionalService: RegionalService,
         public modalService: NgbModal,
     ) { }
 
@@ -38,10 +37,9 @@ export class CustomerModalComponent implements OnInit {
         if (this.statusRec === 'addnew') {
             this.setDefaultValue();
         } else {
-            this.customer = this.objEdit;
-            this.sellerSelected = this.customer.sellerId;
-            this.regionalSelected = this.customer.regionalId;
-            if (this.customer.status === 1) {
+            this.regional = this.objEdit;
+            this.regionalGroupSelected = this.regional.regionalGroupId;
+            if (this.regional.status === 1) {
                 this.statusSelected = this.statuses[0];
             } else {
                 this.statusSelected = this.statuses[1];
@@ -50,20 +48,18 @@ export class CustomerModalComponent implements OnInit {
     }
 
     setDefaultValue() {
-        this.customer = {};
-        this.customer.id = 0;
-        this.sellerSelected = 0;
+        this.regional = {};
+        this.regional.id = 0;
+        this.regionalGroupSelected = 0;
         this.statusSelected = this.statuses[0];
     }
 
     save(): void {
-    
-    this.customer.sellerId = +this.sellerSelected;
-    this.customer.regionalId = +this.regionalSelected;
-    this.customer.status = (this.statusSelected === 'Active' ? 1 : 0);
 
-      if (this.customer.id == 0 ) {
-        this.customerService.save(this.customer).subscribe(result => {
+      if (this.regional.id == 0 ) {
+        this.regional.regionalGroupId = +this.regionalGroupSelected;
+        this.regional.status = (this.statusSelected === 'Active' ? 1 : 0);
+        this.regionalService.save(this.regional).subscribe(result => {
             this.isFormDirty = true;
             if (result.body.errCode === '00') {
                 console.log('success');
@@ -75,10 +71,9 @@ export class CustomerModalComponent implements OnInit {
           });
           return
         }
-        // this.customer.sellerId = +this.sellerSelected;
-        // this.customer.status = (this.statusSelected === 'Active' ? 1 : 0);
-        // this.customer.regionalId = +this.regionalSelected;
-        this.customerService.update(this.customer).subscribe(result => {
+        this.regional.regionalGroupId = +this.regionalGroupSelected;
+        this.regional.status = (this.statusSelected === 'Active' ? 1 : 0);
+        this.regionalService.update(this.regional).subscribe(result => {
           this.isFormDirty = true;
           if (result.body.errCode === '00') {
               console.log('success');
@@ -99,5 +94,4 @@ export class CustomerModalComponent implements OnInit {
             this.modalService.dismissAll('close');
         }
     }
-
 }
