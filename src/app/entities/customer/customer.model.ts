@@ -12,9 +12,13 @@ export class Customer {
         public errDesc?: string,
         public regionalId?: number,
         public regionalName?: string,
+        public lng?: string,
+        public lat?: string,
     ) {
         this.id = 0,
-        this.status = 10
+        this.status = 10,
+        this.lng = "0",
+        this.lat = "0"
     }
 }
 

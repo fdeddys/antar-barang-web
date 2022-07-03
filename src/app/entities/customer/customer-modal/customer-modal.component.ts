@@ -61,6 +61,7 @@ export class CustomerModalComponent implements OnInit {
     this.customer.sellerId = +this.sellerSelected;
     this.customer.regionalId = +this.regionalSelected;
     this.customer.status = (this.statusSelected === 'Active' ? 1 : 0);
+    // this.customer.lng = this.customer.lng
 
       if (this.customer.id == 0 ) {
         this.customerService.save(this.customer).subscribe(result => {

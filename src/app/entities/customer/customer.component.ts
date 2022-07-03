@@ -155,7 +155,10 @@ export class CustomerComponent implements OnInit {
         if (data.contents.length < 0) {
             return;
         }
+        console.log("Contents ==> ", data.contents);
         this.customers = data.contents;
+        console.log("Contents ==> ", this.customers );
+        
         this.totalData = data.totalRow;
     }
 
