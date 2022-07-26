@@ -18,6 +18,7 @@ import { DriverComponent } from './entities/driver/driver.component';
 import { NewTransaksiComponent } from './entities/transaksi/new-transaksi/new-transaksi.component';
 import { RegionalGroupComponent } from './entities/regional-group/regional-group.component';
 import { RegionalComponent } from './entities/regional/regional.component';
+import { ReportTransaksiComponent } from './entities/report/report-transaksi/report-transaksi.component';
 
 
 
@@ -46,6 +47,7 @@ const routes: Routes = [
                     { path: 'role', component: RoleComponent },
                     { path: 'system-parameter', component: SystemParameterComponent },
                     { path: 'access-matrix', component: AccessMatrixComponent },
+                    { path: 'report-transaksi', component: ReportTransaksiComponent },
                     { path: '**', component: Page404Component },
                 ]
             }

@@ -17,6 +17,7 @@ import { DriverModule } from './driver/driver.module';
 import { TransaksiModule } from './transaksi/transaksi.module';
 import { RegionalGroupModule } from './regional-group/regional-group.module';
 import { RegionalModule } from './regional/regional.module';
+import { ReportTransaksiModule } from './report/report-transaksi/report-transaksi.module';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { RegionalModule } from './regional/regional.module';
         DriverModule,
         TransaksiModule,
         RegionalGroupModule,
-        RegionalModule
+        RegionalModule,
+        ReportTransaksiModule
     ],
     entryComponents: [],
     providers: [],
